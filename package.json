@@ -1,0 +1,29 @@
+{
+  "name": "loanexample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.2",
+    "@truffle/hdwallet-provider": "^2.0.3",
+    "ethers": "^5.5.4",
+    "number-to-bn": "^1.7.0",
+    "parcel": "^2.3.1",
+    "rimble-ui": "^0.14.0",
+    "web3": "^1.7.0"
+  },
+  "devDependencies": {
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0"
+  }
+}
