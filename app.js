@@ -2,6 +2,9 @@
 // import {contractABI} from './contractABI.json';
 // import {tokenABI} from './tokenABI.json';
 
+import { createPandoraExpressSDK } from "pandora-express";
+const ExpressSDK = createPandoraExpressSDK();
+
 const contractABI = [
   {
     "inputs": [],
@@ -799,6 +802,75 @@ const tokenABI = [
     }
   ];
 
+const contractAbi = [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "pancakeRouter",
+      "outputs": [
+        {
+          "internalType": "contract IPancakeRouter02",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive",
+      "payable": true
+    },
+    {
+      "inputs": [],
+      "name": "bnbToCake",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function",
+      "payable": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "bnb",
+          "type": "uint256"
+        }
+      ],
+      "name": "getEstimateBUSD",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ];
+
+
+mint = async () =>{
+  const accounts = await web3.eth.getAccounts();
+  const chainId = await web3.eth.net.getId();
+  console.log(chainId);
+  await ExpressSDK.erc721.nft.mint(web3, chainId, accounts[0], itemURI.value, [
+    [accounts[0], 100],
+  ]);
+}
+
+const itemURI = document.getElementById("mintNFT");
+
+const createItemButton = document.getElementById("mintBtn");
+createItemButton.onclick = mint;
 
 const REQUEST_STATUS = ["Pending", "Active", "Cancelled", "Ended", "Defaulted"];
 
@@ -965,6 +1037,8 @@ endLoan = async () => {
   });
 
 }
+
+
 
 const approves = document.getElementById("approveBtn");
 approves.onclick = approveNFT;
